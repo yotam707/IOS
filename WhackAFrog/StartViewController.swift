@@ -26,6 +26,12 @@ class StartViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         return 1
     }
     
+//    @IBAction func startGameButton(_ sender: UIButton) {
+//        let storyBoard : UIStoryboard = UIStoryboard(name:"Main", bundle: nil)
+//        
+//        let nextViewController = storyBoard.instantiateInitialViewController("viewController") as ViewController
+//        self.presentView
+//    }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return pickerData.count
     }
@@ -78,7 +84,7 @@ class StartViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(segue.identifier == "start_game"){
+        if(segue.identifier == "mySague"){
             let vController = segue.destination as! ViewController
             
             let selectedValue = pickerData[myPicker.selectedRow(inComponent: 0)]

@@ -9,5 +9,5 @@
 import Foundation
 
 enum MoleLevel: Int{
-    case Beginner = 1, Intermediate, Expert
-}
+    case Beginner = 1, Intermediate = 2, Expert
+ = 3}

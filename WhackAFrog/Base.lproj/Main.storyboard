@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="z6J-SM-pT1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="z6J-SM-pT1">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -27,7 +27,7 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="33"/>
                                 <state key="normal" title="Start"/>
                                 <connections>
-                                    <action selector="startGameBtn:" destination="z6J-SM-pT1" eventType="touchUpInside" id="3t8-ZW-3zS"/>
+                                    <segue destination="BYZ-38-t0r" kind="showDetail" identifier="mySague" id="hKT-Bl-C4W"/>
                                 </connections>
                             </button>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FTX-ii-cGe">
@@ -152,11 +152,12 @@
                         <outlet property="hitsValueLabel" destination="MzD-NO-zye" id="B4E-ni-3tK"/>
                         <outlet property="scoreValueLabel" destination="YSy-hQ-Nsa" id="nJs-2i-074"/>
                         <outlet property="timerValueLabel" destination="zsC-LA-ndw" id="h5O-6a-xGZ"/>
+                        <segue destination="z6J-SM-pT1" kind="show" identifier="backToMainSague" id="GfX-Hj-hO7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="568.79999999999995" y="171.36431784107947"/>
+            <point key="canvasLocation" x="561" y="178"/>
         </scene>
     </scenes>
 </document>
