@@ -18,7 +18,7 @@ class MoleCollectionViewCell: UICollectionViewCell {
     
     var isMoleUp = false
     
-    func isMoleUpStatus()-> Bool{
+    func isMoleUpStatus() -> Bool{
         return isMoleUp
     }
     
@@ -26,6 +26,13 @@ class MoleCollectionViewCell: UICollectionViewCell {
         isMoleUp = true
         let moleImage = moleImages[Int(arc4random_uniform(UInt32(moleImages.count)))]
         moleImageView.image = moleImage
+    }
+    
+    func isRedMole(image: UIImageView) -> Bool {
+        if image.image == moleImages[1]{
+            return true
+        }
+        return false
     }
     
     func setMoleDown(){

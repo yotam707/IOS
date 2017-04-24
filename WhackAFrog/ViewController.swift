@@ -10,33 +10,99 @@ import UIKit
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
-    var moles: [Mole] = []
-    let cells: [[Int]] = [[0,1],[0,2],[0,3],[1,1],[1,2],[1,3],[2,1],[2,2],[2,3]]
+    var activeMoles: [[Int]] = []
+    var cells: [[Int]] = []
     
     
     
     @IBOutlet weak var timerValueLabel: UILabel!
     @IBOutlet weak var scoreValueLabel: UILabel!
     @IBOutlet weak var hitsValueLabel: UILabel!
+    @IBOutlet weak var collectionView: UICollectionView!
+    
     
     var currentScoreValue = 0
     var currentHitsValue = 0
     var numOfRows = 3
     var numOfCols = 3
     var moleLevel: MoleLevel!
+    var numOfMisses = 0
+    var numOfMoles = 0
     var seconds = 120
     var timer = Timer()
     var isTimerRunning = false
+    var gameFinished = false
     
+    func createCells(){
+        for row in 0..<numOfRows{
+            for col in 0..<numOfCols{
+                cells.append([row,col])
+            }
+        }
+    }
     
     func runTimer(){
         seconds = Int(120 * (Float(2)/Float(moleLevel.rawValue)))
-        timer = Timer.scheduledTimer(timeInterval: TimeInterval(Double(Float(2)/Float(moleLevel.rawValue))), target: self, selector: (#selector(ViewController.updateTimer)), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: TimeInterval(Double(Float(2)/Float(moleLevel.rawValue))), target: self, selector: (#selector(ViewController.runGame)), userInfo: nil, repeats: true)
+    }
+    
+    func runGame(){
+        updateTimer()
+        if !gameFinished {
+        let cell = getEmptyMoleCell()
+        cell.setMoleUp()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3/moleLevel.rawValue), execute: { [weak self] in
+            guard let strongSelf = self else { return }
+            if cell.isMoleUpStatus(){
+                strongSelf.missMole()
+                cell.setMoleDown()
+            }
+        })
+        }
+        else{
+            return
+        }
+        
+    }
+    //need to fix this when array is empty
+    func getEmptyMoleCell() -> MoleCollectionViewCell{
+        numOfMoles = Int(arc4random_uniform(UInt32(cells.count)))
+        cells.shuffle()
+        let cellIndex = cells.removeFirst()
+        
+        let cell = collectionView.cellForItem(at: IndexPath(row: cellIndex[0],section: cellIndex[1])) as! MoleCollectionViewCell
+        
+        if !cell.isMoleUpStatus(){
+            addToUsedCells(cellIndex: cellIndex)
+            return cell
+        }
+        else{
+            removeFromUsedCells(cellIndex: cellIndex)
+        }
+        return getEmptyMoleCell()
+    }
+    
+    
+    func removeFromUsedCells(cellIndex:[Int]){
+        if let indexC = activeMoles.index(where: { $0 == cellIndex }){
+            let cellIndex = activeMoles.remove(at: indexC)
+            addToMoleCells(cellIndex: cellIndex)
+        }
+    }
+    
+    func addToMoleCells(cellIndex: [Int]){
+        cells.append(cellIndex)
+    }
+    
+    func addToUsedCells(cellIndex: [Int]){
+        activeMoles.append(cellIndex)
     }
     
     func updateTimer(){
         if seconds < 1{
             timer.invalidate()
+            return
         } else{
             seconds -= 1
             timerValueLabel.text = timerString(time: TimeInterval(seconds))
@@ -44,42 +110,52 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     func timerString(time:TimeInterval) -> String{
-        let minuets = Int(time) / 60 % 60
+        let minutes = Int(time) / 60 % 60
         let seconds = Int(time) % 60
-        return String(format: "%02i:%02i", minuets, seconds)
+        return String(format: "%02i:%02i", minutes, seconds)
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.collectionView!.register(MoleCollectionViewCell.self , forCellWithReuseIdentifier: "MoleCollectionViewCell")
+        //self.collectionView!.register(MoleCollectionViewCell.self , forCellWithReuseIdentifier: "MoleCollectionViewCell")
         
-        
-        
-        
-            // Do any additional setup after loading the view, typically from a nib.
+        // Do any additional setup after loading the view, typically from a nib.
     }
+    
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        createCells()
         startGame()
     }
     
     func initilizeView(){
-        scoreValueLabel.text = "\(currentScoreValue)"
-        hitsValueLabel.text = "\(currentHitsValue)"
+        updateLabels()
     }
     
     func startGame(){
         runTimer()
     }
     
+    func updateLabels(){
+        updateScore()
+        updateHits()
+    }
+    
+    
+    func missMole(){
+        numOfMisses += 1
+        if numOfMisses == 3 {
+            finishGame(win: false)
+        }
+    }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let moleCell = collectionView.cellForItem(at: indexPath) as! MoleCollectionViewCell
         
         if moleCell.isMoleUpStatus(){
-            if moleCell.moleImageView == moleCell.moleImages[0]{
+            if !moleCell.isRedMole(image: moleCell.moleImageView){
                 hitMoleUp()
             }
             else{
@@ -93,12 +169,15 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func hitMoleUp(){
         currentScoreValue += moleLevel.rawValue * 10
         currentHitsValue += 1
+        updateLabels()
         if currentHitsValue == 30 {
             finishGame(win: true)
         }
     }
     
     func finishGame(win: Bool){
+        
+        gameFinished = true
         var alertMsg: UIAlertController!
         
         if win {
@@ -114,6 +193,15 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
     }
     
+    
+    func updateHits(){
+        hitsValueLabel.text = "\(currentHitsValue)"
+    }
+    
+    func updateScore(){
+        scoreValueLabel.text = "\(currentScoreValue)"
+    }
+    
     func hitMoleDown(){
         if currentScoreValue > 0{
             currentScoreValue -= 1
@@ -121,6 +209,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         if currentHitsValue > 0{
             currentHitsValue -= moleLevel.rawValue * 10
         }
+        updateLabels()
     }
     
     override func didReceiveMemoryWarning() {
@@ -128,21 +217,18 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         // Dispose of any resources that can be recreated.
     }
     
-    @IBOutlet weak var collectionView: UICollectionView!
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return numOfRows
     }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return numOfCols
     }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MoleCollectionViewCell", for: indexPath) as! MoleCollectionViewCell
-        
-        
         return cell
     }
     

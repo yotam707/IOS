@@ -19,6 +19,7 @@
 		579AEB501E9AAAA100411169 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 579AEB4E1E9AAAA100411169 /* LaunchScreen.storyboard */; };
 		579AEB5B1E9AAAA100411169 /* WhackAFrogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579AEB5A1E9AAAA100411169 /* WhackAFrogTests.swift */; };
 		579AEB661E9AAAA100411169 /* WhackAFrogUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579AEB651E9AAAA100411169 /* WhackAFrogUITests.swift */; };
+		57F631161EAE45DB00D5A283 /* Array + suffle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F631151EAE45DB00D5A283 /* Array + suffle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		579AEB611E9AAAA100411169 /* WhackAFrogUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WhackAFrogUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		579AEB651E9AAAA100411169 /* WhackAFrogUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhackAFrogUITests.swift; sourceTree = "<group>"; };
 		579AEB671E9AAAA100411169 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		57F631151EAE45DB00D5A283 /* Array + suffle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array + suffle.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 		579AEB411E9AAAA100411169 /* WhackAFrog */ = {
 			isa = PBXGroup;
 			children = (
+				57F631141EAE45B200D5A283 /* extentions */,
 				579AEB421E9AAAA100411169 /* AppDelegate.swift */,
 				579AEB441E9AAAA100411169 /* ViewController.swift */,
 				579AEB461E9AAAA100411169 /* Main.storyboard */,
@@ -138,6 +141,14 @@
 				579AEB671E9AAAA100411169 /* Info.plist */,
 			);
 			path = WhackAFrogUITests;
+			sourceTree = "<group>";
+		};
+		57F631141EAE45B200D5A283 /* extentions */ = {
+			isa = PBXGroup;
+			children = (
+				57F631151EAE45DB00D5A283 /* Array + suffle.swift */,
+			);
+			name = extentions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,6 +291,7 @@
 				5733F4901EA52F7A00A38D16 /* MoleLevel.swift in Sources */,
 				579AEB451E9AAAA100411169 /* ViewController.swift in Sources */,
 				579AEB431E9AAAA100411169 /* AppDelegate.swift in Sources */,
+				57F631161EAE45DB00D5A283 /* Array + suffle.swift in Sources */,
 				5733F48E1EA52B9000A38D16 /* StartViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
