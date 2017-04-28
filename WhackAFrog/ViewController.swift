@@ -23,8 +23,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     var currentScoreValue = 0
     var currentHitsValue = 0
-    var numOfRows = 3
-    var numOfCols = 3
+    var numOfRows = 4
+    var numOfCols = 4
     var moleLevel: MoleLevel!
     var numOfMisses = 0
     var numOfMoles = 0
