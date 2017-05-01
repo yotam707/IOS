@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class MoleCollectionViewCell: UICollectionViewCell {
     
@@ -17,6 +18,10 @@ class MoleCollectionViewCell: UICollectionViewCell {
     let defaultHoleImage = #imageLiteral(resourceName: "mole-hole")
     
     var isMoleUp = false
+    
+    var audioPlayer = AVAudioPlayer()
+    
+    
     
     func isMoleUpStatus() -> Bool{
         return isMoleUp
@@ -39,5 +44,23 @@ class MoleCollectionViewCell: UICollectionViewCell {
         isMoleUp = false
         moleImageView.image = defaultHoleImage
         
+    }
+    
+    func playPunchMusic(){
+        do{
+            let punchSound = URL(fileURLWithPath: Bundle.main.path(forResource: "punch", ofType: "mp3")!)
+            self.audioPlayer = try AVAudioPlayer(contentsOf: punchSound)
+            self.audioPlayer.numberOfLoops = 1
+            self.audioPlayer.prepareToPlay()
+            self.audioPlayer.play()
+        }
+        catch{
+            print("paunch.mp3 can't be played")
+        }
+    }
+    
+    
+    func stopFromMusic(){
+        self.audioPlayer.stop()
     }
 }

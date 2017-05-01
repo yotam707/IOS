@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     var activeMoles: [[Int]] = []
     var cells: [[Int]] = []
@@ -19,12 +19,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBOutlet weak var scoreValueLabel: UILabel!
     @IBOutlet weak var hitsValueLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var missesLabelValue: UILabel!
     
     
     var currentScoreValue = 0
     var currentHitsValue = 0
     var numOfRows = 4
     var numOfCols = 4
+    fileprivate let itemsPerRow: CGFloat = 4
     var moleLevel: MoleLevel!
     var numOfMisses = 0
     var numOfMoles = 0
@@ -32,6 +34,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var timer = Timer()
     var isTimerRunning = false
     var gameFinished = false
+    fileprivate let sectionInsets = UIEdgeInsets(top: 20.0, left: 10.0, bottom: 20.0, right: 5.0)
+    
     
     func createCells(){
         for row in 0..<numOfRows{
@@ -55,8 +59,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3/moleLevel.rawValue), execute: { [weak self] in
             guard let strongSelf = self else { return }
             if cell.isMoleUpStatus(){
-                strongSelf.missMole()
-                cell.setMoleDown()
+                if !cell.isRedMole(image: cell.moleImageView){
+                    strongSelf.missMole()
+                }
+            cell.setMoleDown()
             }
         })
         }
@@ -68,6 +74,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     //need to fix this when array is empty
     func getEmptyMoleCell() -> MoleCollectionViewCell{
         numOfMoles = Int(arc4random_uniform(UInt32(cells.count)))
+        if cells.count <= 0{
+            popFromUsedCells()
+        }
         cells.shuffle()
         let cellIndex = cells.removeFirst()
         
@@ -89,6 +98,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             let cellIndex = activeMoles.remove(at: indexC)
             addToMoleCells(cellIndex: cellIndex)
         }
+    }
+    
+    func popFromUsedCells(){
+        for index in activeMoles{
+            addToMoleCells(cellIndex: index)
+        }
+        let cellIndex = activeMoles.removeLast()
+        addToMoleCells(cellIndex: cellIndex)
     }
     
     func addToMoleCells(cellIndex: [Int]){
@@ -119,10 +136,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     override func viewDidLoad() {
         super.viewDidLoad()
         //self.collectionView!.register(MoleCollectionViewCell.self , forCellWithReuseIdentifier: "MoleCollectionViewCell")
+      
+        
         
         // Do any additional setup after loading the view, typically from a nib.
     }
-    
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -146,7 +164,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     
     func missMole(){
+        
         numOfMisses += 1
+        missesLabelValue.text = "\(numOfMisses)"
         if numOfMisses == 3 {
             finishGame(win: false)
         }
@@ -156,6 +176,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         if moleCell.isMoleUpStatus(){
             if !moleCell.isRedMole(image: moleCell.moleImageView){
+                moleCell.playPunchMusic()
                 hitMoleUp()
             }
             else{
@@ -166,6 +187,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
     }
     
+  
     func hitMoleUp(){
         currentScoreValue += moleLevel.rawValue * 10
         currentHitsValue += 1
@@ -173,6 +195,27 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         if currentHitsValue == 30 {
             finishGame(win: true)
         }
+    }
+    
+    func hitMoleDown(){
+        if currentScoreValue > 0{
+            currentScoreValue -= moleLevel.rawValue * 10
+            if currentScoreValue < 0{
+                currentScoreValue = 0
+            }
+        }
+        if currentHitsValue > 0{
+            currentHitsValue -= 1
+        }
+        updateLabels()
+    }
+
+
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        self.collectionView?.collectionViewLayout.invalidateLayout()
+     
     }
     
     func finishGame(win: Bool){
@@ -202,15 +245,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         scoreValueLabel.text = "\(currentScoreValue)"
     }
     
-    func hitMoleDown(){
-        if currentScoreValue > 0{
-            currentScoreValue -= 1
-        }
-        if currentHitsValue > 0{
-            currentHitsValue -= moleLevel.rawValue * 10
-        }
-        updateLabels()
-    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
