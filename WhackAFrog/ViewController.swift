@@ -21,6 +21,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var missesLabelValue: UILabel!
     
+    @IBOutlet weak var gameDataView: UIView!
     
     var currentScoreValue = 0
     var currentHitsValue = 0
@@ -136,7 +137,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     override func viewDidLoad() {
         super.viewDidLoad()
         //self.collectionView!.register(MoleCollectionViewCell.self , forCellWithReuseIdentifier: "MoleCollectionViewCell")
-      
+        collectionView.backgroundColor = UIColor(white: 1, alpha: 0)
+        gameDataView.layer.cornerRadius = 5
+        gameDataView.layer.borderWidth = 3
+        gameDataView.layer.borderColor = UIColor.brown.cgColor
         
         
         // Do any additional setup after loading the view, typically from a nib.
@@ -145,6 +149,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        //collectionView.backgroundColor = UIColor(white: 1, alpha: 1)
         createCells()
         startGame()
     }
