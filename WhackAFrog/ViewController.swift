@@ -235,7 +235,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             alertMsg = UIAlertController(title: "You Lose mofo", message: "\(currentHitsValue) hits were made", preferredStyle: UIAlertControllerStyle.alert)
         }
         
-        alertMsg.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: {action in self.performSegue(withIdentifier: "backToMainSague", sender: self) }))
+        alertMsg.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: {action in self.dismiss(animated: true, completion: nil)}))
         
         present(alertMsg, animated: true, completion: nil)
         
