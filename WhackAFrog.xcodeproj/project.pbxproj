@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		571B14091EE003430080A0F3 /* DBController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571B14081EE003430080A0F3 /* DBController.swift */; };
 		5733F4881EA3751200A38D16 /* Mole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5733F4871EA3751200A38D16 /* Mole.swift */; };
 		5733F48A1EA4D28F00A38D16 /* MoleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5733F4891EA4D28F00A38D16 /* MoleCollectionViewCell.swift */; };
 		5733F48E1EA52B9000A38D16 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5733F48D1EA52B9000A38D16 /* StartViewController.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		571B14081EE003430080A0F3 /* DBController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBController.swift; sourceTree = "<group>"; };
 		5733F4871EA3751200A38D16 /* Mole.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mole.swift; sourceTree = "<group>"; };
 		5733F4891EA4D28F00A38D16 /* MoleCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoleCollectionViewCell.swift; sourceTree = "<group>"; };
 		5733F48D1EA52B9000A38D16 /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
@@ -88,6 +90,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		259AB33B5AFD9AA73BFDD608 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		57201C051EDEE8BD0010E530 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		579AEB361E9AAAA100411169 = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +111,8 @@
 				579AEB591E9AAAA100411169 /* WhackAFrogTests */,
 				579AEB641E9AAAA100411169 /* WhackAFrogUITests */,
 				579AEB401E9AAAA100411169 /* Products */,
+				57201C051EDEE8BD0010E530 /* Frameworks */,
+				259AB33B5AFD9AA73BFDD608 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -114,6 +132,7 @@
 				57C615E71EB7719000A09926 /* Sounds */,
 				57F631141EAE45B200D5A283 /* extentions */,
 				579AEB421E9AAAA100411169 /* AppDelegate.swift */,
+				571B14081EE003430080A0F3 /* DBController.swift */,
 				579AEB441E9AAAA100411169 /* ViewController.swift */,
 				579AEB461E9AAAA100411169 /* Main.storyboard */,
 				579AEB4C1E9AAAA100411169 /* Assets.xcassets */,
@@ -299,6 +318,7 @@
 			files = (
 				5733F4881EA3751200A38D16 /* Mole.swift in Sources */,
 				5733F48A1EA4D28F00A38D16 /* MoleCollectionViewCell.swift in Sources */,
+				571B14091EE003430080A0F3 /* DBController.swift in Sources */,
 				579AEB4B1E9AAAA100411169 /* WhackAFrog.xcdatamodeld in Sources */,
 				5733F4901EA52F7A00A38D16 /* MoleLevel.swift in Sources */,
 				579AEB451E9AAAA100411169 /* ViewController.swift in Sources */,
@@ -456,6 +476,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = WhackAFrog/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Liveperson.WhackAFrog;
@@ -468,6 +489,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = WhackAFrog/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Liveperson.WhackAFrog;

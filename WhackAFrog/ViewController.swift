@@ -20,18 +20,20 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBOutlet weak var hitsValueLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var missesLabelValue: UILabel!
+    @IBOutlet weak var shakenNumLabel : UILabel!
     
     @IBOutlet weak var gameDataView: UIView!
     
     var currentScoreValue = 0
     var currentHitsValue = 0
-    var numOfRows = 4
-    var numOfCols = 4
-    fileprivate let itemsPerRow: CGFloat = 4
+    var numOfRows = 0
+    var numOfCols = 0
     var moleLevel: MoleLevel!
     var numOfMisses = 0
     var numOfMoles = 0
     var seconds = 120
+    var numOfShakes = 0
+    var addShakeTime = 0
     var timer = Timer()
     var isTimerRunning = false
     var gameFinished = false
@@ -57,7 +59,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let cell = getEmptyMoleCell()
         cell.setMoleUp()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3/moleLevel.rawValue), execute: { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3/moleLevel.rawValue)  + Double(addShakeTime), execute: { [weak self] in
             guard let strongSelf = self else { return }
             if cell.isMoleUpStatus(){
                 if !cell.isRedMole(image: cell.moleImageView){
@@ -102,11 +104,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     func popFromUsedCells(){
-        for index in activeMoles{
-            addToMoleCells(cellIndex: index)
+        if activeMoles.count > 0 {
+            for index in activeMoles{
+                addToMoleCells(cellIndex: index)
+            }
+            let cellIndex = activeMoles.removeLast()
+            addToMoleCells(cellIndex: cellIndex)
         }
-        let cellIndex = activeMoles.removeLast()
-        addToMoleCells(cellIndex: cellIndex)
     }
     
     func addToMoleCells(cellIndex: [Int]){
@@ -136,6 +140,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.becomeFirstResponder()
         //self.collectionView!.register(MoleCollectionViewCell.self , forCellWithReuseIdentifier: "MoleCollectionViewCell")
         collectionView.backgroundColor = UIColor(white: 1, alpha: 0)
         gameDataView.layer.cornerRadius = 5
@@ -149,8 +154,15 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //collectionView.backgroundColor = UIColor(white: 1, alpha: 1)
-        createCells()
+        let screenSize = UIScreen.main.bounds
+        let screenWidth = screenSize.width
+        let screenHeight = screenSize.height
+        
+        numOfRows = Int((screenHeight-100)/106)
+        numOfCols = Int(screenWidth / 106)
+        
+        
+        //createCells()
         startGame()
     }
     
@@ -165,6 +177,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func updateLabels(){
         updateScore()
         updateHits()
+        updateShaken()
+        
+    }
+    func updateShaken(){
+        shakenNumLabel.text = "\(numOfShakes)"
     }
     
     
@@ -222,6 +239,17 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         self.collectionView?.collectionViewLayout.invalidateLayout()
      
     }
+
+    
+    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
+        if motion == .motionShake {
+            if numOfShakes <= 3 {
+                addShakeTime += 3
+                numOfShakes += 1
+                updateShaken()
+            }
+        }
+    }
     
     func finishGame(win: Bool){
         
@@ -268,6 +296,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MoleCollectionViewCell", for: indexPath) as! MoleCollectionViewCell
+        
+        cells.append([indexPath.row, indexPath.section])
         return cell
     }
     

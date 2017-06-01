@@ -30,7 +30,14 @@ class MoleCollectionViewCell: UICollectionViewCell {
     func setMoleUp(){
         isMoleUp = true
         let moleImage = moleImages[Int(arc4random_uniform(UInt32(moleImages.count)))]
+        UIView.transition(with: self.contentView, duration: 0.7, options: UIViewAnimationOptions.transitionFlipFromBottom, animations:
+            {
+                self.moleImageView.image = moleImage
+        }, completion: {finished in
+            
+        })
         moleImageView.image = moleImage
+        
     }
     
     func isRedMole(image: UIImageView) -> Bool {
@@ -42,9 +49,16 @@ class MoleCollectionViewCell: UICollectionViewCell {
     
     func setMoleDown(){
         isMoleUp = false
-        moleImageView.image = defaultHoleImage
+        //moleImageView.image = defaultHoleImage
+        UIView.transition(with: self.contentView, duration: 0.7, options: UIViewAnimationOptions.transitionFlipFromTop, animations:
+            {
+                self.moleImageView.image = self.defaultHoleImage
+        }, completion: {finished in
+        
+        })
         
     }
+    
     
     func playPunchMusic(){
         do{
