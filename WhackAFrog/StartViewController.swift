@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class StartViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     @IBOutlet weak var myPicker: UIPickerView!
@@ -14,24 +15,36 @@ class StartViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     
     let pickerData = ["Beginner", "Intermediate", "Expert"]
     var selctedMoleLevel: MoleLevel = MoleLevel.Beginner
+    var user: WhckAFrogGameUser = NSEntityDescription.insertNewObject(forEntityName: "GameUser", into: DBController.getContext()) as! WhckAFrogGameUser
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.myPicker.dataSource = self
         self.myPicker.delegate = self
         
-    }
+
+        
+        DBController.saveContext()
+        
+        let fetchReq: NSFetchRequest<WhckAFrogGameUser> = WhckAFrogGameUser.fetchRequest()
+        do{
+            let users = try DBController.getContext().fetch(fetchReq)
+            print("number of results \(users.count)")
+            
+            for res in users as [WhckAFrogGameUser]{
+                print("\(res.firstName!)  \(res.lastName!)")
+            }
+        }
+        catch{
+            print("Error Fetching \(error)")
+        }
+    } 
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
-//    @IBAction func startGameButton(_ sender: UIButton) {
-//        let storyBoard : UIStoryboard = UIStoryboard(name:"Main", bundle: nil)
-//        
-//        let nextViewController = storyBoard.instantiateInitialViewController("viewController") as ViewController
-//        self.presentView
-//    }
+
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return pickerData.count
     }

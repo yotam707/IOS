@@ -31,7 +31,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var moleLevel: MoleLevel!
     var numOfMisses = 0
     var numOfMoles = 0
-    var seconds = 120
+    var seconds = 60
     var numOfShakes = 0
     var addShakeTime = 0
     var timer = Timer()
@@ -49,7 +49,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     func runTimer(){
-        seconds = Int(120 * (Float(2)/Float(moleLevel.rawValue)))
+        seconds = 60
         timer = Timer.scheduledTimer(timeInterval: TimeInterval(Double(Float(2)/Float(moleLevel.rawValue))), target: self, selector: (#selector(ViewController.runGame)), userInfo: nil, repeats: true)
     }
     
@@ -263,8 +263,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             alertMsg = UIAlertController(title: "You Lose mofo", message: "\(currentHitsValue) hits were made", preferredStyle: UIAlertControllerStyle.alert)
         }
         
-        alertMsg.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: {action in self.dismiss(animated: true, completion: nil)}))
+        let action =  UIAlertAction(title: "Okay",style: UIAlertActionStyle.default, handler: {
+            action in self.performSegue(withIdentifier: "leaderSegue", sender: self)
+        })
         
+        //alertMsg.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: {action in self.dismiss(animated: true, completion: nil)}))
+        alertMsg.addAction(action)
         present(alertMsg, animated: true, completion: nil)
         
     }

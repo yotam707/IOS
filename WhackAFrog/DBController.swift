@@ -17,6 +17,11 @@ class DBController {
         
     }
     
+    class func getContext()-> NSManagedObjectContext {
+        return persistentContainer.viewContext
+    }
+    
+    
     // MARK: - Core Data stack
     
     static var persistentContainer: NSPersistentContainer = {
