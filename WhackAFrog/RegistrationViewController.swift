@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class RegistrationViewController: UIViewController ,UITextFieldDelegate{
 
@@ -36,9 +37,40 @@ class RegistrationViewController: UIViewController ,UITextFieldDelegate{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "regSague"){
             let sController = segue.destination as! StartViewController
-            sController.user.firstName = FirstNameTextValue.text
-            sController.user.lastName = LastNameTextValue.text
+            createUser()
         }
+    }
+    
+    func createUser(){
+        let entityDescription = NSEntityDescription.entity(forEntityName: "GameUser", in: DBController.getContext())
+        let user = WhckAFrogGameUser(entity: entityDescription!, insertInto: DBController.getContext())
+        user.firstName = FirstNameTextValue.text
+        user.lastName = LastNameTextValue.text
+        
+        
+        let fetchReq: NSFetchRequest<WhckAFrogGameUser> = WhckAFrogGameUser.fetchRequest()
+        do{
+            let users = try DBController.getContext().fetch(fetchReq)
+            if users.first(where:{ $0.firstName == user.firstName && $0.lastName == user.lastName}) != nil{
+                print("user already exsist")
+            }else{
+                DBController.saveContext()
+            }
+            
+                
+            print("number of results \(users.count)")
+            
+            for res in users as [WhckAFrogGameUser]{
+                print("\(res.firstName!)  \(res.lastName!)")
+            }
+        }
+        catch{
+            print("Error Fetching \(error)")
+        }
+
+        
+        DBController.saveContext()
+
     }
 
 }

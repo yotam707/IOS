@@ -15,7 +15,7 @@ class StartViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     
     let pickerData = ["Beginner", "Intermediate", "Expert"]
     var selctedMoleLevel: MoleLevel = MoleLevel.Beginner
-    var user: WhckAFrogGameUser = NSEntityDescription.insertNewObject(forEntityName: "GameUser", into: DBController.getContext()) as! WhckAFrogGameUser
+//    var user: WhckAFrogGameUser = NSEntityDescription.insertNewObject(forEntityName: "GameUser", into: DBController.getContext()) as! WhckAFrogGameUser
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,21 +23,21 @@ class StartViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         self.myPicker.delegate = self
         
 
-        
-        DBController.saveContext()
-        
-        let fetchReq: NSFetchRequest<WhckAFrogGameUser> = WhckAFrogGameUser.fetchRequest()
-        do{
-            let users = try DBController.getContext().fetch(fetchReq)
-            print("number of results \(users.count)")
-            
-            for res in users as [WhckAFrogGameUser]{
-                print("\(res.firstName!)  \(res.lastName!)")
-            }
-        }
-        catch{
-            print("Error Fetching \(error)")
-        }
+//        
+//        DBController.saveContext()
+//        
+//        let fetchReq: NSFetchRequest<WhckAFrogGameUser> = WhckAFrogGameUser.fetchRequest()
+//        do{
+//            let users = try DBController.getContext().fetch(fetchReq)
+//            print("number of results \(users.count)")
+//            
+//            for res in users as [WhckAFrogGameUser]{
+//                print("\(res.firstName!)  \(res.lastName!)")
+//            }
+//        }
+//        catch{
+//            print("Error Fetching \(error)")
+//        }
     } 
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
