@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 class DBController {
     
@@ -19,6 +20,14 @@ class DBController {
     
     class func getContext()-> NSManagedObjectContext {
         return persistentContainer.viewContext
+    }
+    
+    static func setUserDetails(_ value: WhckAFrogGameUser, keyVal: String){
+        UserDefaults.standard.set(value,forKey: keyVal)
+    }
+    
+    static func getUsetDetails(keyVal: String) -> WhckAFrogGameUser{
+        return (UserDefaults.standard.object(forKey: keyVal) as? WhckAFrogGameUser)!
     }
     
     

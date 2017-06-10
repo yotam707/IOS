@@ -36,7 +36,7 @@ class RegistrationViewController: UIViewController ,UITextFieldDelegate{
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "regSague"){
-            let sController = segue.destination as! StartViewController
+//            let sController = segue.destination as! StartViewController
             createUser()
         }
     }
@@ -46,7 +46,7 @@ class RegistrationViewController: UIViewController ,UITextFieldDelegate{
         let user = WhckAFrogGameUser(entity: entityDescription!, insertInto: DBController.getContext())
         user.firstName = FirstNameTextValue.text
         user.lastName = LastNameTextValue.text
-        
+        DBController.setUserDetails(user, keyVal: "CurrentUser")
         
         let fetchReq: NSFetchRequest<WhckAFrogGameUser> = WhckAFrogGameUser.fetchRequest()
         do{
@@ -67,9 +67,6 @@ class RegistrationViewController: UIViewController ,UITextFieldDelegate{
         catch{
             print("Error Fetching \(error)")
         }
-
-        
-        DBController.saveContext()
 
     }
 
