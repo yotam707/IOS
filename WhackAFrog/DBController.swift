@@ -13,21 +13,29 @@ import UIKit
 class DBController {
     
     
-    
     private init(){
         
     }
+    
     
     class func getContext()-> NSManagedObjectContext {
         return persistentContainer.viewContext
     }
     
     static func setUserDetails(_ value: WhckAFrogGameUser, keyVal: String){
-        UserDefaults.standard.set(value,forKey: keyVal)
+        UserDefaults.standard.set(value.firstName, forKey: GlobalConstants.gameFirstName)
+        UserDefaults.standard.set(value.lastName, forKey: GlobalConstants.gameLastName)
+        UserDefaults.standard.set(value.longitude, forKey: GlobalConstants.userLongitude)
+        UserDefaults.standard.set(value.latitude, forKey: GlobalConstants.userLatitude)
+        UserDefaults.standard.set(value.score, forKey: GlobalConstants.userScore)
+        UserDefaults.standard.set(value.gameLevel, forKey: GlobalConstants.gameLevel)
+        UserDefaults.standard.set(Date(), forKey: GlobalConstants.userTime)
     }
     
-    static func getUsetDetails(keyVal: String) -> WhckAFrogGameUser{
-        return (UserDefaults.standard.object(forKey: keyVal) as? WhckAFrogGameUser)!
+    static func getUsetDetails(keyVal: String) -> WhackLocalUserData{
+        let whackUser =  WhackLocalUserData(firstName: UserDefaults.standard.string(forKey: GlobalConstants.gameFirstName)!, lastName: UserDefaults.standard.string(forKey: GlobalConstants.gameLastName)!, dateTime: UserDefaults.standard.object(forKey: GlobalConstants.userTime) as! Date, long: UserDefaults.standard.string(forKey: GlobalConstants.userLongitude)!, lati: UserDefaults.standard.string(forKey: GlobalConstants.userLatitude)!)
+        
+        return whackUser
     }
     
     

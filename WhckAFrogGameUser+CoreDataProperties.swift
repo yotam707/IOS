@@ -22,5 +22,7 @@ extension WhckAFrogGameUser {
     @NSManaged public var lastName: String?
     @NSManaged public var misses: Int32
     @NSManaged public var score: Int32
+    @NSManaged public var longitude: Double
+    @NSManaged public var latitude: Double
 
 }

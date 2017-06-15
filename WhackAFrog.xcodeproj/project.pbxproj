@@ -26,6 +26,8 @@
 		57A576651EE3045400E72E2A /* LeaderBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A576641EE3045400E72E2A /* LeaderBoardViewController.swift */; };
 		57A576671EE3057800E72E2A /* LeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A576661EE3057800E72E2A /* LeaderCell.swift */; };
 		57C615E91EB771A700A09926 /* punch.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 57C615E81EB771A700A09926 /* punch.mp3 */; };
+		57EC02211EF2C59400DC81FC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EC02201EF2C59400DC81FC /* Constants.swift */; };
+		57EC02231EF2D12F00DC81FC /* WhackLocalUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EC02221EF2D12F00DC81FC /* WhackLocalUserData.swift */; };
 		57F631161EAE45DB00D5A283 /* Array + suffle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F631151EAE45DB00D5A283 /* Array + suffle.swift */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +74,8 @@
 		57A576641EE3045400E72E2A /* LeaderBoardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderBoardViewController.swift; sourceTree = "<group>"; };
 		57A576661EE3057800E72E2A /* LeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderCell.swift; sourceTree = "<group>"; };
 		57C615E81EB771A700A09926 /* punch.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = punch.mp3; path = ../../../../../Downloads/punch.mp3; sourceTree = "<group>"; };
+		57EC02201EF2C59400DC81FC /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		57EC02221EF2D12F00DC81FC /* WhackLocalUserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhackLocalUserData.swift; sourceTree = "<group>"; };
 		57F631151EAE45DB00D5A283 /* Array + suffle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array + suffle.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -112,6 +116,7 @@
 			children = (
 				571B14261EE0391A0080A0F3 /* WhckAFrogGameUser+CoreDataClass.swift */,
 				571B14271EE0391A0080A0F3 /* WhckAFrogGameUser+CoreDataProperties.swift */,
+				57EC02221EF2D12F00DC81FC /* WhackLocalUserData.swift */,
 			);
 			name = WhackModel;
 			sourceTree = "<group>";
@@ -166,6 +171,7 @@
 				571B142A1EE03AB60080A0F3 /* RegistrationViewController.swift */,
 				57A576641EE3045400E72E2A /* LeaderBoardViewController.swift */,
 				57A576661EE3057800E72E2A /* LeaderCell.swift */,
+				57EC02201EF2C59400DC81FC /* Constants.swift */,
 			);
 			path = WhackAFrog;
 			sourceTree = "<group>";
@@ -344,6 +350,8 @@
 				571B14291EE0391A0080A0F3 /* WhckAFrogGameUser+CoreDataProperties.swift in Sources */,
 				571B14091EE003430080A0F3 /* DBController.swift in Sources */,
 				57A576651EE3045400E72E2A /* LeaderBoardViewController.swift in Sources */,
+				57EC02231EF2D12F00DC81FC /* WhackLocalUserData.swift in Sources */,
+				57EC02211EF2C59400DC81FC /* Constants.swift in Sources */,
 				579AEB4B1E9AAAA100411169 /* WhackAFrog.xcdatamodeld in Sources */,
 				5733F4901EA52F7A00A38D16 /* MoleLevel.swift in Sources */,
 				571B142B1EE03AB60080A0F3 /* RegistrationViewController.swift in Sources */,
