@@ -22,22 +22,6 @@ class StartViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         self.myPicker.dataSource = self
         self.myPicker.delegate = self
         
-
-//        
-//        DBController.saveContext()
-//        
-//        let fetchReq: NSFetchRequest<WhckAFrogGameUser> = WhckAFrogGameUser.fetchRequest()
-//        do{
-//            let users = try DBController.getContext().fetch(fetchReq)
-//            print("number of results \(users.count)")
-//            
-//            for res in users as [WhckAFrogGameUser]{
-//                print("\(res.firstName!)  \(res.lastName!)")
-//            }
-//        }
-//        catch{
-//            print("Error Fetching \(error)")
-//        }
     } 
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

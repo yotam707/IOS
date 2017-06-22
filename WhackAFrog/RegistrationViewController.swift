@@ -29,7 +29,18 @@ class RegistrationViewController: UIViewController ,UITextFieldDelegate, CLLocat
         
         regButton.isEnabled = false
         FirstNameTextValue.addTarget(self, action: #selector(textIsEmpty), for: .editingChanged)
-
+        
+         let fetchReq: NSFetchRequest<WhckAFrogGameUser> = WhckAFrogGameUser.fetchRequest()
+         let request = NSBatchDeleteRequest(fetchRequest: fetchReq as! NSFetchRequest<NSFetchRequestResult>)
+        do{
+            _ = try DBController.getContext().execute(request)
+            DBController.getContext().reset()
+            
+        }
+        catch{
+            print("error")
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -98,6 +109,7 @@ class RegistrationViewController: UIViewController ,UITextFieldDelegate, CLLocat
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "regSague"){
             createUser()
+            locationManager.stopUpdatingLocation()
         }
     }
     
@@ -123,7 +135,7 @@ class RegistrationViewController: UIViewController ,UITextFieldDelegate, CLLocat
             print("number of results \(users.count)")
             
             for res in users as [WhckAFrogGameUser]{
-                print("\(res.firstName!)  \(res.lastName!)")
+                print("\(res.firstName!)  \(res.lastName!)  \(res.latitude)  \(res.longitude)")
             }
         }
         catch{

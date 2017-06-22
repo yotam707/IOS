@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class LeaderBoardViewController: UIViewController , UITableViewDelegate, UITableViewDataSource{
 
@@ -17,6 +18,7 @@ class LeaderBoardViewController: UIViewController , UITableViewDelegate, UITable
         super.viewDidLoad()
         leaderUITableView.delegate = self
         leaderUITableView.dataSource = self
+         fetchEntities()
         // Do any additional setup after loading the view.
     }
 
@@ -44,6 +46,29 @@ class LeaderBoardViewController: UIViewController , UITableViewDelegate, UITable
         print("You selected cell #\(indexPath.row)!")
     }
     
+    func fetchEntities(){
+        //let currentUser = DBController.getUsetDetails()
+        
+        //let predicate = NSPredicate(format: "firstName == %@ && lastName == %@", currentUser.firstName!, currentUser.lastName!)
+        let sortDesc = NSSortDescriptor(key: "score", ascending: true)
+        let fetchReq: NSFetchRequest<WhckAFrogGameUser> = WhckAFrogGameUser.fetchRequest()
+        let sortDescs = [sortDesc]
+        fetchReq.sortDescriptors = sortDescs
+        
+        //let users = try DBController.getContext().fetch(fetchReq)
+        //fetchRequest.predicate = predicate
+        
+        do {
+            let users = try DBController.getContext().fetch(fetchReq)
+            for res in users as [WhckAFrogGameUser]{
+                print("\(res.firstName!)  \(res.lastName!)  \(res.latitude)  \(res.longitude) \(res.score)")
+            }
+            
+        } catch {
+            print("Error in updtae user current score, \(error)")
+        }
+
+    }
     
 
     /*

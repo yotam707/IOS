@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		571B14091EE003430080A0F3 /* DBController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571B14081EE003430080A0F3 /* DBController.swift */; };
 		571B14281EE0391A0080A0F3 /* WhckAFrogGameUser+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571B14261EE0391A0080A0F3 /* WhckAFrogGameUser+CoreDataClass.swift */; };
-		571B14291EE0391A0080A0F3 /* WhckAFrogGameUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571B14271EE0391A0080A0F3 /* WhckAFrogGameUser+CoreDataProperties.swift */; };
 		571B142B1EE03AB60080A0F3 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571B142A1EE03AB60080A0F3 /* RegistrationViewController.swift */; };
 		5733F4881EA3751200A38D16 /* Mole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5733F4871EA3751200A38D16 /* Mole.swift */; };
 		5733F48A1EA4D28F00A38D16 /* MoleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5733F4891EA4D28F00A38D16 /* MoleCollectionViewCell.swift */; };
@@ -28,6 +27,7 @@
 		57C615E91EB771A700A09926 /* punch.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 57C615E81EB771A700A09926 /* punch.mp3 */; };
 		57EC02211EF2C59400DC81FC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EC02201EF2C59400DC81FC /* Constants.swift */; };
 		57EC02231EF2D12F00DC81FC /* WhackLocalUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EC02221EF2D12F00DC81FC /* WhackLocalUserData.swift */; };
+		57EC02281EF3DBCA00DC81FC /* WhckAFrogGameUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EC02271EF3DBCA00DC81FC /* WhckAFrogGameUser+CoreDataProperties.swift */; };
 		57F631161EAE45DB00D5A283 /* Array + suffle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F631151EAE45DB00D5A283 /* Array + suffle.swift */; };
 /* End PBXBuildFile section */
 
@@ -51,7 +51,6 @@
 /* Begin PBXFileReference section */
 		571B14081EE003430080A0F3 /* DBController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBController.swift; sourceTree = "<group>"; };
 		571B14261EE0391A0080A0F3 /* WhckAFrogGameUser+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "WhckAFrogGameUser+CoreDataClass.swift"; path = "../WhckAFrogGameUser+CoreDataClass.swift"; sourceTree = "<group>"; };
-		571B14271EE0391A0080A0F3 /* WhckAFrogGameUser+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "WhckAFrogGameUser+CoreDataProperties.swift"; path = "../WhckAFrogGameUser+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		571B142A1EE03AB60080A0F3 /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		5733F4871EA3751200A38D16 /* Mole.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mole.swift; sourceTree = "<group>"; };
 		5733F4891EA4D28F00A38D16 /* MoleCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoleCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -76,6 +75,8 @@
 		57C615E81EB771A700A09926 /* punch.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = punch.mp3; path = ../../../../../Downloads/punch.mp3; sourceTree = "<group>"; };
 		57EC02201EF2C59400DC81FC /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		57EC02221EF2D12F00DC81FC /* WhackLocalUserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhackLocalUserData.swift; sourceTree = "<group>"; };
+		57EC02241EF3D9EB00DC81FC /* WhackAFrog2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WhackAFrog2.xcdatamodel; sourceTree = "<group>"; };
+		57EC02271EF3DBCA00DC81FC /* WhckAFrogGameUser+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "WhckAFrogGameUser+CoreDataProperties.swift"; path = "../WhckAFrogGameUser+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		57F631151EAE45DB00D5A283 /* Array + suffle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array + suffle.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -114,8 +115,8 @@
 		571B14251EE0101F0080A0F3 /* WhackModel */ = {
 			isa = PBXGroup;
 			children = (
+				57EC02271EF3DBCA00DC81FC /* WhckAFrogGameUser+CoreDataProperties.swift */,
 				571B14261EE0391A0080A0F3 /* WhckAFrogGameUser+CoreDataClass.swift */,
-				571B14271EE0391A0080A0F3 /* WhckAFrogGameUser+CoreDataProperties.swift */,
 				57EC02221EF2D12F00DC81FC /* WhackLocalUserData.swift */,
 			);
 			name = WhackModel;
@@ -347,10 +348,10 @@
 			files = (
 				5733F4881EA3751200A38D16 /* Mole.swift in Sources */,
 				5733F48A1EA4D28F00A38D16 /* MoleCollectionViewCell.swift in Sources */,
-				571B14291EE0391A0080A0F3 /* WhckAFrogGameUser+CoreDataProperties.swift in Sources */,
 				571B14091EE003430080A0F3 /* DBController.swift in Sources */,
 				57A576651EE3045400E72E2A /* LeaderBoardViewController.swift in Sources */,
 				57EC02231EF2D12F00DC81FC /* WhackLocalUserData.swift in Sources */,
+				57EC02281EF3DBCA00DC81FC /* WhckAFrogGameUser+CoreDataProperties.swift in Sources */,
 				57EC02211EF2C59400DC81FC /* Constants.swift in Sources */,
 				579AEB4B1E9AAAA100411169 /* WhackAFrog.xcdatamodeld in Sources */,
 				5733F4901EA52F7A00A38D16 /* MoleLevel.swift in Sources */,
@@ -633,9 +634,10 @@
 		579AEB491E9AAAA100411169 /* WhackAFrog.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				57EC02241EF3D9EB00DC81FC /* WhackAFrog2.xcdatamodel */,
 				579AEB4A1E9AAAA100411169 /* WhackAFrog.xcdatamodel */,
 			);
-			currentVersion = 579AEB4A1E9AAAA100411169 /* WhackAFrog.xcdatamodel */;
+			currentVersion = 57EC02241EF3D9EB00DC81FC /* WhackAFrog2.xcdatamodel */;
 			path = WhackAFrog.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

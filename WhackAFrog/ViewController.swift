@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
@@ -267,12 +268,32 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             action in self.performSegue(withIdentifier: "leaderSegue", sender: self)
         })
         
-        //alertMsg.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: {action in self.dismiss(animated: true, completion: nil)}))
+        updateCurrentUserScore()
+        
         alertMsg.addAction(action)
         present(alertMsg, animated: true, completion: nil)
         
     }
     
+    func updateCurrentUserScore(){
+        let currentUser = DBController.getUsetDetails()
+        
+        let predicate = NSPredicate(format: "firstName == %@ && lastName == %@", currentUser.firstName!, currentUser.lastName!)
+        let fetchRequest : NSFetchRequest<WhckAFrogGameUser> = WhckAFrogGameUser.fetchRequest()
+        fetchRequest.predicate = predicate
+        
+        do {
+            let user = try DBController.getContext().fetch(fetchRequest) as [WhckAFrogGameUser]
+            user.first?.score = Int32(currentScoreValue)
+            user.first?.misses = Int32(numOfMisses)
+
+        } catch {
+            print("Error in updtae user current score, \(error)")
+        }
+        
+        DBController.saveContext()
+            
+    }
     
     func updateHits(){
         hitsValueLabel.text = "\(currentHitsValue)"

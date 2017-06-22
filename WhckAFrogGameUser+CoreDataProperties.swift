@@ -2,7 +2,7 @@
 //  WhckAFrogGameUser+CoreDataProperties.swift
 //  WhackAFrog
 //
-//  Created by Yotam Bloom on 6/1/17.
+//  Created by Yotam Bloom on 6/16/17.
 //  Copyright © 2017 Yotam Bloom. All rights reserved.
 //
 
@@ -20,9 +20,9 @@ extension WhckAFrogGameUser {
     @NSManaged public var gameLevel: String?
     @NSManaged public var id: Int32
     @NSManaged public var lastName: String?
+    @NSManaged public var latitude: Double
+    @NSManaged public var longitude: Double
     @NSManaged public var misses: Int32
     @NSManaged public var score: Int32
-    @NSManaged public var longitude: Double
-    @NSManaged public var latitude: Double
 
 }

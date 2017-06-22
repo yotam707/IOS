@@ -32,7 +32,7 @@ class DBController {
         UserDefaults.standard.set(Date(), forKey: GlobalConstants.userTime)
     }
     
-    static func getUsetDetails(keyVal: String) -> WhackLocalUserData{
+    static func getUsetDetails() -> WhackLocalUserData{
         let whackUser =  WhackLocalUserData(firstName: UserDefaults.standard.string(forKey: GlobalConstants.gameFirstName)!, lastName: UserDefaults.standard.string(forKey: GlobalConstants.gameLastName)!, dateTime: UserDefaults.standard.object(forKey: GlobalConstants.userTime) as! Date, long: UserDefaults.standard.string(forKey: GlobalConstants.userLongitude)!, lati: UserDefaults.standard.string(forKey: GlobalConstants.userLatitude)!)
         
         return whackUser
