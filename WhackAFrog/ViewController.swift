@@ -35,6 +35,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var seconds = 60
     var numOfShakes = 0
     var addShakeTime = 0
+    var peneltyHit = 0
     var timer = Timer()
     var isTimerRunning = false
     var gameFinished = false
@@ -56,22 +57,28 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func runGame(){
         updateTimer()
-        if !gameFinished {
-        let cell = getEmptyMoleCell()
-        cell.setMoleUp()
+        if(peneltyHit == 0){
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3/moleLevel.rawValue)  + Double(addShakeTime), execute: { [weak self] in
-            guard let strongSelf = self else { return }
-            if cell.isMoleUpStatus(){
-                if !cell.isRedMole(image: cell.moleImageView){
-                    strongSelf.missMole()
-                }
-            cell.setMoleDown()
+            if !gameFinished {
+                let cell = getEmptyMoleCell()
+                cell.setMoleUp()
+        
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3/moleLevel.rawValue) + Double(numOfShakes) , execute: { [weak self] in
+                    guard let strongSelf = self else { return }
+                    if cell.isMoleUpStatus(){
+                        if !cell.isRedMole(image: cell.moleImageView){
+                            strongSelf.missMole()
+                        }
+                        cell.setMoleDown()
+                    }
+                })
             }
-        })
+            else{
+                return
+            }
         }
         else{
-            return
+            peneltyHit-=1
         }
         
     }
@@ -155,6 +162,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+
         let screenSize = UIScreen.main.bounds
         let screenWidth = screenSize.width
         let screenHeight = screenSize.height
@@ -221,6 +230,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     func hitMoleDown(){
+        peneltyHit += 3
         if currentScoreValue > 0{
             currentScoreValue -= moleLevel.rawValue * 10
             if currentScoreValue < 0{

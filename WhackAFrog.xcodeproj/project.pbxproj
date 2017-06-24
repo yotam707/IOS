@@ -10,6 +10,10 @@
 		571B14091EE003430080A0F3 /* DBController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571B14081EE003430080A0F3 /* DBController.swift */; };
 		571B14281EE0391A0080A0F3 /* WhckAFrogGameUser+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571B14261EE0391A0080A0F3 /* WhckAFrogGameUser+CoreDataClass.swift */; };
 		571B142B1EE03AB60080A0F3 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571B142A1EE03AB60080A0F3 /* RegistrationViewController.swift */; };
+		5725B3941EFE6F1A00757B59 /* MainScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5725B3931EFE6F1A00757B59 /* MainScoreViewController.swift */; };
+		5725B3961EFE706100757B59 /* MapLeadersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5725B3951EFE706100757B59 /* MapLeadersViewController.swift */; };
+		5725B3981EFE862B00757B59 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5725B3971EFE862B00757B59 /* MapKit.framework */; };
+		5725B39A1EFEC74D00757B59 /* WinnerAnootationPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5725B3991EFEC74D00757B59 /* WinnerAnootationPin.swift */; };
 		5733F4881EA3751200A38D16 /* Mole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5733F4871EA3751200A38D16 /* Mole.swift */; };
 		5733F48A1EA4D28F00A38D16 /* MoleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5733F4891EA4D28F00A38D16 /* MoleCollectionViewCell.swift */; };
 		5733F48E1EA52B9000A38D16 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5733F48D1EA52B9000A38D16 /* StartViewController.swift */; };
@@ -52,6 +56,10 @@
 		571B14081EE003430080A0F3 /* DBController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBController.swift; sourceTree = "<group>"; };
 		571B14261EE0391A0080A0F3 /* WhckAFrogGameUser+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "WhckAFrogGameUser+CoreDataClass.swift"; path = "../WhckAFrogGameUser+CoreDataClass.swift"; sourceTree = "<group>"; };
 		571B142A1EE03AB60080A0F3 /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		5725B3931EFE6F1A00757B59 /* MainScoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainScoreViewController.swift; path = ../MainScoreViewController.swift; sourceTree = "<group>"; };
+		5725B3951EFE706100757B59 /* MapLeadersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapLeadersViewController.swift; sourceTree = "<group>"; };
+		5725B3971EFE862B00757B59 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		5725B3991EFEC74D00757B59 /* WinnerAnootationPin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WinnerAnootationPin.swift; sourceTree = "<group>"; };
 		5733F4871EA3751200A38D16 /* Mole.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mole.swift; sourceTree = "<group>"; };
 		5733F4891EA4D28F00A38D16 /* MoleCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoleCollectionViewCell.swift; sourceTree = "<group>"; };
 		5733F48D1EA52B9000A38D16 /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5725B3981EFE862B00757B59 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +134,7 @@
 		57201C051EDEE8BD0010E530 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5725B3971EFE862B00757B59 /* MapKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -160,6 +170,12 @@
 				579AEB421E9AAAA100411169 /* AppDelegate.swift */,
 				571B14081EE003430080A0F3 /* DBController.swift */,
 				579AEB441E9AAAA100411169 /* ViewController.swift */,
+				5725B3931EFE6F1A00757B59 /* MainScoreViewController.swift */,
+				57A576641EE3045400E72E2A /* LeaderBoardViewController.swift */,
+				5725B3951EFE706100757B59 /* MapLeadersViewController.swift */,
+				5725B3991EFEC74D00757B59 /* WinnerAnootationPin.swift */,
+				571B142A1EE03AB60080A0F3 /* RegistrationViewController.swift */,
+				5733F48D1EA52B9000A38D16 /* StartViewController.swift */,
 				579AEB461E9AAAA100411169 /* Main.storyboard */,
 				579AEB4C1E9AAAA100411169 /* Assets.xcassets */,
 				579AEB4E1E9AAAA100411169 /* LaunchScreen.storyboard */,
@@ -167,10 +183,7 @@
 				579AEB491E9AAAA100411169 /* WhackAFrog.xcdatamodeld */,
 				5733F4871EA3751200A38D16 /* Mole.swift */,
 				5733F4891EA4D28F00A38D16 /* MoleCollectionViewCell.swift */,
-				5733F48D1EA52B9000A38D16 /* StartViewController.swift */,
 				5733F48F1EA52F7A00A38D16 /* MoleLevel.swift */,
-				571B142A1EE03AB60080A0F3 /* RegistrationViewController.swift */,
-				57A576641EE3045400E72E2A /* LeaderBoardViewController.swift */,
 				57A576661EE3057800E72E2A /* LeaderCell.swift */,
 				57EC02201EF2C59400DC81FC /* Constants.swift */,
 			);
@@ -280,6 +293,11 @@
 					579AEB3E1E9AAAA100411169 = {
 						CreatedOnToolsVersion = 8.3.1;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					579AEB551E9AAAA100411169 = {
 						CreatedOnToolsVersion = 8.3.1;
@@ -350,8 +368,11 @@
 				5733F48A1EA4D28F00A38D16 /* MoleCollectionViewCell.swift in Sources */,
 				571B14091EE003430080A0F3 /* DBController.swift in Sources */,
 				57A576651EE3045400E72E2A /* LeaderBoardViewController.swift in Sources */,
+				5725B3961EFE706100757B59 /* MapLeadersViewController.swift in Sources */,
 				57EC02231EF2D12F00DC81FC /* WhackLocalUserData.swift in Sources */,
 				57EC02281EF3DBCA00DC81FC /* WhckAFrogGameUser+CoreDataProperties.swift in Sources */,
+				5725B3941EFE6F1A00757B59 /* MainScoreViewController.swift in Sources */,
+				5725B39A1EFEC74D00757B59 /* WinnerAnootationPin.swift in Sources */,
 				57EC02211EF2C59400DC81FC /* Constants.swift in Sources */,
 				579AEB4B1E9AAAA100411169 /* WhackAFrog.xcdatamodeld in Sources */,
 				5733F4901EA52F7A00A38D16 /* MoleLevel.swift in Sources */,

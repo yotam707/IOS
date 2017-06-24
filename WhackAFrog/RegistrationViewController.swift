@@ -30,17 +30,6 @@ class RegistrationViewController: UIViewController ,UITextFieldDelegate, CLLocat
         regButton.isEnabled = false
         FirstNameTextValue.addTarget(self, action: #selector(textIsEmpty), for: .editingChanged)
         
-         let fetchReq: NSFetchRequest<WhckAFrogGameUser> = WhckAFrogGameUser.fetchRequest()
-         let request = NSBatchDeleteRequest(fetchRequest: fetchReq as! NSFetchRequest<NSFetchRequestResult>)
-        do{
-            _ = try DBController.getContext().execute(request)
-            DBController.getContext().reset()
-            
-        }
-        catch{
-            print("error")
-        }
-        
     }
 
     override func didReceiveMemoryWarning() {

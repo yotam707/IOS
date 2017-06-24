@@ -22,7 +22,12 @@ class StartViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         self.myPicker.dataSource = self
         self.myPicker.delegate = self
         
-    } 
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+
+    }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
