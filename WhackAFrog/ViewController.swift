@@ -63,7 +63,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 let cell = getEmptyMoleCell()
                 cell.setMoleUp()
         
-                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3/moleLevel.rawValue) + Double(numOfShakes) , execute: { [weak self] in
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds((3/moleLevel.rawValue) + numOfShakes) , execute: { [weak self] in
                     guard let strongSelf = self else { return }
                     if cell.isMoleUpStatus(){
                         if !cell.isRedMole(image: cell.moleImageView){
@@ -255,7 +255,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
         if motion == .motionShake {
             if numOfShakes <= 3 {
-                addShakeTime += 3
+                addShakeTime += 1
                 numOfShakes += 1
                 updateShaken()
             }
