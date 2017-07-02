@@ -274,14 +274,15 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             alertMsg = UIAlertController(title: "You Lose mofo", message: "\(currentHitsValue) hits were made", preferredStyle: UIAlertControllerStyle.alert)
         }
         
-        let action =  UIAlertAction(title: "Okay",style: UIAlertActionStyle.default, handler: {
-            action in self.performSegue(withIdentifier: "leaderSegue", sender: self)
+        let action =  UIAlertAction(title: "Okay",style: UIAlertActionStyle.default, handler: {(_) in
+            self.performSegue(withIdentifier: "leaderSegue", sender: self)
+            self.dismis
         })
         
         updateCurrentUserScore()
-        
         alertMsg.addAction(action)
         present(alertMsg, animated: true, completion: nil)
+        
         
     }
     

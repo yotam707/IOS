@@ -356,7 +356,7 @@
                         <outlet property="scoreValueLabel" destination="YSy-hQ-Nsa" id="nJs-2i-074"/>
                         <outlet property="shakenNumLabel" destination="kBP-Zk-Jt9" id="c0L-z5-iDZ"/>
                         <outlet property="timerValueLabel" destination="zsC-LA-ndw" id="h5O-6a-xGZ"/>
-                        <segue destination="b8E-sl-W6o" kind="show" identifier="leaderSegue" id="zoc-fe-58m"/>
+                        <segue destination="b8E-sl-W6o" kind="presentation" identifier="leaderSegue" id="zoc-fe-58m"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -384,7 +384,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Close"/>
                                 <connections>
-                                    <segue destination="z6J-SM-pT1" kind="show" identifier="backToMain" id="Tyd-MI-QVN"/>
+                                    <segue destination="z6J-SM-pT1" kind="presentation" identifier="backToMain" id="Tyd-MI-QVN"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -671,6 +671,6 @@
         <image name="welcomeBG" width="250" height="384"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="aNV-mm-3Me"/>
+        <segue reference="Tyd-MI-QVN"/>
     </inferredMetricsTieBreakers>
 </document>

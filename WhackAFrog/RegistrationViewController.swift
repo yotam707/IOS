@@ -99,6 +99,8 @@ class RegistrationViewController: UIViewController ,UITextFieldDelegate, CLLocat
         if(segue.identifier == "regSague"){
             createUser()
             locationManager.stopUpdatingLocation()
+            self.dismiss(animated: true, completion: nil)
+
         }
     }
     
