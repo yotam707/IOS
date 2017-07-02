@@ -276,7 +276,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         let action =  UIAlertAction(title: "Okay",style: UIAlertActionStyle.default, handler: {(_) in
             self.performSegue(withIdentifier: "leaderSegue", sender: self)
-            self.dismis
         })
         
         updateCurrentUserScore()
